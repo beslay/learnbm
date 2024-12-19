@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 1.5em; /* Increase font size */
+        }
+        .correct {
+            color: green;
+        }
+        .wrong {
+            color: red;
+        }
+        a {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Result</h1>
+        {% if 'Correct' in result %}
+            <p class="correct">{{ result }}</p>
+        {% else %}
+            <p class="wrong">{{ result }}</p>
+        {% endif %}
+        {% if q_index + 1 < total %}
+            <a href="{{ url_for('next_question', q_index=q_index) }}">Next Question</a>
+        {% else %}
+            <a href="{{ url_for('done') }}">Finish Quiz</a>
+        {% endif %}
+    </div>
+</body>
+</html>
